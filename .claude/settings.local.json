@@ -32,7 +32,10 @@
       "Bash(git push *)",
       "Bash(echo \"exit: $?\")",
       "Bash(tasklist)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "PowerShell(Test-NetConnection *)",
+      "PowerShell(Get-Service *)",
+      "PowerShell(Get-Process *)"
     ]
   }
 }

@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import TaskForm from "./components/TaskForm.jsx";
-import Column from "./components/Column.jsx";
+import TaskItem from "./components/TaskItem.jsx";
 import { listTasks, createTask, updateTask, deleteTask } from "./api.js";
-
-const COLUMNS = [
-  { status: "pendiente", title: "Por hacer" },
-  { status: "en_progreso", title: "Haciendo" },
-  { status: "hecha", title: "Realizadas" },
-];
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -73,18 +67,20 @@ export default function App() {
 
       {error && <div className="error">{error}</div>}
 
-      <div className="board">
-        {COLUMNS.map((c) => (
-          <Column
-            key={c.status}
-            status={c.status}
-            title={c.title}
-            tasks={tasks.filter((t) => t.status === c.status)}
-            onDropTask={handleStatusChange}
-            onEdit={setEditing}
-            onDelete={handleDelete}
-          />
-        ))}
+      <div className="task-list">
+        {tasks.length === 0 ? (
+          <p className="empty">No hay tareas todavía</p>
+        ) : (
+          tasks.map((t) => (
+            <TaskItem
+              key={t.id}
+              task={t}
+              onEdit={setEditing}
+              onDelete={handleDelete}
+              onStatusChange={handleStatusChange}
+            />
+          ))
+        )}
       </div>
     </div>
   );
