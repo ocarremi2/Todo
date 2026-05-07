@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm *)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(winget search *)",
+      "PowerShell(winget install *)",
+      "PowerShell(& \"C:\\\\Program Files\\\\MySQL\\\\MySQL Server 8.4\\\\bin\\\\mysqld.exe\" --initialize-insecure --datadir=\"C:\\\\Users\\\\ocarr\\\\mysql-data\" --console 2>&1 | Select-Object -Last 20; \"EXIT=$LASTEXITCODE\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\MySQL\\\\MySQL Server 8.4\\\\bin\\\\mysqld.exe\" --console --datadir=\"C:\\\\Users\\\\ocarr\\\\mysql-data\" --port=3306)",
+      "PowerShell($ok = $false; for \\($i=0; $i -lt 30; $i++\\) { try { $tcp = New-Object Net.Sockets.TcpClient; $tcp.Connect\\(\"127.0.0.1\", 3306\\); if \\($tcp.Connected\\) { $ok = $true; $tcp.Close\\(\\); break } } catch { Start-Sleep -Milliseconds 500 } }; if \\($ok\\) { \"MYSQL_READY\" } else { \"MYSQL_NOT_READY\" })",
+      "PowerShell(& \"C:\\\\Program Files\\\\MySQL\\\\MySQL Server 8.4\\\\bin\\\\mysql.exe\" -u root -h 127.0.0.1 -P 3306 -e \"CREATE DATABASE IF NOT EXISTS todo_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; SHOW DATABASES;\")",
+      "PowerShell(python -m venv \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\\\\venv\"; if \\($?\\) { \"VENV_OK\" } else { \"VENV_FAIL\" })",
+      "PowerShell(& \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\\\\venv\\\\Scripts\\\\python.exe\" -m pip install --quiet --disable-pip-version-check -r \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\\\\requirements.txt\"; if \\($?\\) { \"PIP_OK\" } else { \"PIP_FAIL\" })",
+      "PowerShell(& \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\\\\venv\\\\Scripts\\\\python.exe\" -m pip install --quiet --disable-pip-version-check --upgrade pip; & \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\\\\venv\\\\Scripts\\\\python.exe\" -m pip install --disable-pip-version-check -r \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\\\\requirements.txt\"; if \\($?\\) { \"PIP_OK\" } else { \"PIP_FAIL\" })",
+      "PowerShell($env:PYTHONUNBUFFERED=\"1\"; Set-Location \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\"; & \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\\\\venv\\\\Scripts\\\\python.exe\" -m uvicorn main:app --host 127.0.0.1 --port 8000)",
+      "PowerShell($ok = $false; for \\($i=0; $i -lt 30; $i++\\) { try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000/\" -UseBasicParsing -TimeoutSec 2; if \\($r.StatusCode -eq 200\\) { $ok = $true; $r.Content; break } } catch { Start-Sleep -Milliseconds 500 } }; if \\(-not $ok\\) { \"BACKEND_NOT_READY\" })",
+      "PowerShell($body = '{\"title\":\"Tarea de prueba\",\"description\":\"verificacion\",\"status\":\"pendiente\"}'; $r = Invoke-RestMethod -Uri \"http://127.0.0.1:8000/tasks\" -Method Post -ContentType \"application/json\" -Body $body; $r | ConvertTo-Json -Compress; \"---\"; \\(Invoke-RestMethod -Uri \"http://127.0.0.1:8000/tasks\"\\) | ConvertTo-Json -Compress)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\frontend\"; & \"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\" install --no-fund --no-audit --silent; \"EXIT=$LASTEXITCODE\")",
+      "PowerShell($ok = $false; for \\($i=0; $i -lt 30; $i++\\) { try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:5173/\" -UseBasicParsing -TimeoutSec 2; if \\($r.StatusCode -eq 200\\) { $ok = $true; \"FRONTEND_READY \\(status $\\($r.StatusCode\\), $\\($r.Content.Length\\) bytes\\)\"; break } } catch { Start-Sleep -Milliseconds 500 } }; if \\(-not $ok\\) { \"FRONTEND_NOT_READY\" })",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:5173/\" -UseBasicParsing -TimeoutSec 5; \"OK status=$\\($r.StatusCode\\) bytes=$\\($r.Content.Length\\)\" } catch { \"ERR: $_\" })",
+      "PowerShell(netstat *)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:5173/\" -UseBasicParsing -TimeoutSec 5; \"FRONT_OK status=$\\($r.StatusCode\\)\" } catch { \"ERR: $_\" })",
+      "PowerShell(npm.cmd run dev --prefix \"c:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\frontend\")",
+      "PowerShell(& \"c:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\\\\venv\\\\Scripts\\\\python.exe\" -m uvicorn main:app --reload --host 127.0.0.1 --port 8000 --app-dir \"c:\\\\Users\\\\ocarr\\\\OneDrive\\\\Documents\\\\IA\\\\To_Do\\\\backend\")",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git ls-remote *)",
+      "Bash(git add *)"
+    ]
+  }
+}
